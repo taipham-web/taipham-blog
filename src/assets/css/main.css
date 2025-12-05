@@ -761,6 +761,23 @@ body {
 }
 
 @media (max-width: 768px) {
+  .about-container {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    padding: 2rem 1.5rem;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .about-image {
+    max-width: 120px;
+    margin: 0;
+  }
+
+  .about-image img {
+    border-radius: 8px;
+  }
+
   .about-content h1 {
     font-size: 3rem;
   }
