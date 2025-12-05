@@ -31,9 +31,7 @@ export function AboutPage() {
                     </div>
                 </div>
                 
-                <div class="about-image">
-                    <img src="/images/about/profile.jpg" alt="Profile" />
-                </div>
+        
             </div>
             
             <div class="about-gallery">
