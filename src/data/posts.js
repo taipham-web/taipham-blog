@@ -60,7 +60,7 @@ export const posts = [
   {
     id: 3,
     title: "Phương trình hạ chí: Bài toán buồn của đại dương",
-    date: "2025-12-07",
+    date: "2025-12-06",
     category: "Review Sách",
     youtubeId: "5klMkOEz6Hg", // Để null để hiện ảnh bìa (hoặc tìm trailer phim Manatsu no Houteishiki điền vào)
     image: "/images/anhBia/HaChi.jpg",
@@ -90,7 +90,7 @@ export const posts = [
   {
     id: 4,
     title: "Nếu ta chưa từng thấy thái dương: Khi bóng tối là nơi trú ẩn",
-    date: "2025-12-08",
+    date: "2025-12-06",
     category: "Review Phim",
     youtubeId: null, // Bạn có thể tìm trailer phim điền vào đây, hoặc để null để hiện ảnh bìa
     image: "/images/anhBia/NeuTaChuaTungThayThaiDuong.jpg",
