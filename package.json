@@ -1,0 +1,21 @@
+{
+  "name": "my-personal-blog",
+  "version": "1.0.0",
+  "description": "A simple personal blog built with vanilla JavaScript",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": [
+    "blog",
+    "personal-blog",
+    "javascript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
