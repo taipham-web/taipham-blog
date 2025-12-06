@@ -161,7 +161,7 @@ export const posts = [
     id: 6,
     title:
       "Chuyện con mèo dạy hải âu bay: Cổ tích về sự tử tế giữa bến cảng Hamburg",
-    date: "2025-12-10",
+    date: "2025-12-6",
     category: "Review Sách",
     youtubeId: null, // Sách này không cần trailer, hãy để ảnh bìa nói lên tất cả
     image: "/images/anhBia/ConMeoDayHaiAuBay.png",
