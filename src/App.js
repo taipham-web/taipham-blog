@@ -1,7 +1,7 @@
 // App.js - Component chính để điều hướng (Routing)
 import { Header } from "./components/Header.js";
 import { Footer } from "./components/Footer.js";
-import { HomePage } from "./pages/HomePage.js";
+import { HomePage, loadMorePosts } from "./pages/HomePage.js";
 import { PostDetail } from "./pages/PostDetail.js";
 import { AboutPage } from "./pages/AboutPage.js";
 import { FavoritesPage } from "./pages/FavoritesPage.js";
@@ -101,6 +101,12 @@ export function render() {
 
     // Initialize mobile menu
     initMobileMenu();
+
+    // Initialize load more button
+    initLoadMore();
+
+    // Initialize scroll to top button
+    initScrollToTop();
   }
 }
 
@@ -111,15 +117,23 @@ function initMobileMenu() {
 
   if (!menuToggle || !navMenu) return;
 
-  menuToggle.addEventListener("click", () => {
+  menuToggle.addEventListener("click", (e) => {
+    e.stopPropagation();
     navMenu.classList.toggle("open");
   });
 
-  // Close menu when clicking outside
+  // Close menu when clicking outside or on a link
   document.addEventListener("click", (e) => {
-    if (!e.target.closest(".nav") && navMenu.classList.contains("open")) {
+    if (!e.target.closest(".header") && navMenu.classList.contains("open")) {
       navMenu.classList.remove("open");
     }
+  });
+
+  // Close menu when clicking on a menu link
+  navMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("open");
+    });
   });
 }
 
@@ -209,6 +223,41 @@ function initGallerySlider() {
   // Pause auto-play on hover
   slider.addEventListener("mouseenter", stopAutoPlay);
   slider.addEventListener("mouseleave", startAutoPlay);
+}
+
+// Load more functionality
+function initLoadMore() {
+  const loadMoreBtn = document.querySelector("[data-load-more]");
+
+  if (!loadMoreBtn) return;
+
+  loadMoreBtn.addEventListener("click", () => {
+    loadMorePosts();
+  });
+}
+
+// Scroll to top functionality
+function initScrollToTop() {
+  const scrollToTopBtn = document.getElementById("scrollToTop");
+
+  if (!scrollToTopBtn) return;
+
+  // Show/hide button based on scroll position
+  window.addEventListener("scroll", () => {
+    if (window.pageYOffset > 300) {
+      scrollToTopBtn.classList.add("visible");
+    } else {
+      scrollToTopBtn.classList.remove("visible");
+    }
+  });
+
+  // Scroll to top when clicked
+  scrollToTopBtn.addEventListener("click", () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  });
 }
 
 // Handle browser back/forward buttons

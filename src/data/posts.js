@@ -116,4 +116,101 @@ export const posts = [
       <p><strong>Had I not seen the sun</strong> để lại một dư vị đắng chát. Bộ phim đặt ra câu hỏi muôn thuở: Liệu chúng ta có nên mạo hiểm bước ra ánh sáng để rồi có nguy cơ bị thiêu đốt, hay mãi mãi ẩn mình an toàn trong bóng tối? Một tác phẩm điện ảnh đẹp đến nao lòng nhưng cũng buồn đến xé lòng.</p>
     `,
   },
+  {
+    id: 5,
+    title: "Titanic: Chuyến tàu của những giấc mơ và lời hứa trọn đời",
+    date: "2025-12-06",
+    category: "Review Phim",
+    youtubeId: "gs5GwXOgumc", // ID trailer bản 25th Anniversary (Rất đẹp)
+    image: "/images/anhBia/titanic.jpg",
+    content: `
+      <p class="intro-quote"><em>"To make each day count." (Hãy sống trọn vẹn từng ngày).</em></p>
+      
+      <p>Đã bao nhiêu năm trôi qua kể từ lần đầu tiên bạn xem Titanic? 10 năm? 20 năm? Dù thời gian có phủ bụi lên mọi thứ, nhưng mỗi khi tiếng sáo của bản <em>"My Heart Will Go On"</em> cất lên, lồng ngực chúng ta vẫn thắt lại. Titanic không chỉ là một bộ phim về thảm họa, nó là một bảo tàng lưu giữ những gì đẹp đẽ nhất và đau đớn nhất của kiếp nhân sinh.</p>
+      
+      <h3>1. Hơn cả một chuyện tình</h3>
+      <p>Người ta thường nói về Jack và Rose như một chuyện tình lãng mạn kinh điển kiểu Romeo và Juliet. Nhưng sâu xa hơn, Jack không chỉ mang đến cho Rose tình yêu, anh mang đến cho cô sự <strong>giải thoát</strong>.</p>
+      
+      <img src="/images/anhMinhHoa/titanic1.jpg" alt="Cảnh Jack và Rose đứng ở mũi tàu">
+      
+      <p>Trước khi gặp Jack, Rose là một con chim bị nhốt trong chiếc lồng son thếp vàng của giới thượng lưu. Cô sống nhưng như đã chết. Jack - chàng họa sĩ nghèo với đôi mắt sáng như sao trời - đã dạy cô cách khạc nhổ, cách uống bia, và quan trọng nhất: cách đứng ở mũi tàu đón gió và cảm thấy mình là "vua của thế giới".</p>
+      
+      <blockquote>
+        "Anh đã cứu em, Jack. Bằng mọi cách mà một con người có thể được cứu rỗi."
+      </blockquote>
+
+      <h3>2. Bản nhạc cuối cùng</h3>
+      <p>Một trong những phân cảnh lấy đi nhiều nước mắt nhất không phải là lúc tàu chìm, mà là hình ảnh ban nhạc Wallace Hartley vẫn điềm nhiên chơi đàn giữa cơn hỗn loạn.</p>
+      
+      <p>Khi mọi người giẫm đạp lên nhau để giành giật sự sống, tiếng đàn vĩ cầm vang lên bản thánh ca <em>"Nearer, My God, to Thee"</em> như một lời an ủi cuối cùng gửi đến những linh hồn sắp ra đi. Đó là khoảnh khắc phẩm giá con người chiến thắng nỗi sợ hãi cái chết.</p>
+
+      <h3>3. Đại dương lạnh lẽo và Lời hứa</h3>
+      <p>Cái lạnh của Đại Tây Dương đêm hôm đó có thể làm đông cứng mọi thứ, nhưng không thể làm đóng băng lời hứa của Rose. </p>
+      
+      <img src="/images/anhMinhHoa/titanic2.jpg" alt="Cảnh chia ly cuối cùng">
+      
+      <p>Hình ảnh Rose buông tay Jack để anh chìm sâu vào lòng đại dương đen ngòm là một trong những hình ảnh ám ảnh nhất lịch sử điện ảnh. Cô buông tay anh, nhưng cô không bao giờ buông bỏ lời hứa <em>"sẽ không bao giờ bỏ cuộc"</em>. Rose đã sống thay cho cả phần đời của Jack: cô học cưỡi ngựa, cô lái máy bay, cô sống một cuộc đời rực rỡ sắc màu như anh từng mong ước.</p>
+
+      <h3>Lời kết: Giấc mơ ở Đại sảnh đường</h3>
+      <p>Bộ phim kết thúc bằng một giấc mơ – hay có lẽ là thiên đường? Nơi Rose, nay đã là một bà lão, bước trở lại con tàu Titanic nguyên vẹn. Đồng hồ chỉ đúng giờ con tàu chìm, Jack đứng đó, quay lại mỉm cười và đưa tay ra đón cô. Xung quanh là những hành khách đã khuất vỗ tay chúc phúc.</p>
+      
+      <p>Titanic nhắc nhở chúng ta rằng: Cuộc đời này rất ngắn, và cũng rất mong manh. Chúng ta không biết tảng băng trôi của đời mình sẽ xuất hiện lúc nào. Vì vậy, hãy yêu thương nồng nhiệt, hãy sống trọn vẹn từng khoảnh khắc, để khi tấm màn nhung khép lại, ta không có gì phải hối tiếc.</p>
+    `,
+  },
+  {
+    id: 6,
+    title:
+      "Chuyện con mèo dạy hải âu bay: Cổ tích về sự tử tế giữa bến cảng Hamburg",
+    date: "2025-12-10",
+    category: "Review Sách",
+    youtubeId: null, // Sách này không cần trailer, hãy để ảnh bìa nói lên tất cả
+    image: "/images/anhBia/ConMeoDayHaiAuBay.png",
+    content: `
+      <p class="intro-quote"><em>"Thật dễ dàng để chấp nhận và yêu thương một kẻ nào đó giống mình, nhưng để yêu thương ai đó khác mình thực sự rất khó khăn."</em></p>
+      
+      <p>Nếu có một cuốn sách nào đó đủ sức khiến một đứa trẻ bật cười khanh khách, rồi ngay sau đó làm một người lớn phải lặng lẽ lau nước mắt giữa đêm khuya, thì đó chính là <strong>"Chuyện con mèo dạy hải âu bay"</strong> của Luis Sepúlveda.</p>
+      
+      <p>Câu chuyện bắt đầu bằng một bi kịch của thời đại công nghiệp: Lớp váng dầu tử thần. Kengah, cô hải âu xinh đẹp với đôi cánh màu bạc, đã bị nhấn chìm trong thứ chất thải đen ngòm ấy. Với chút sức tàn cuối cùng, cô bay đến ban công của Zorba - con mèo mun to đùng, mập ú ở bến cảng Hamburg. Và tại đó, trước khi trút hơi thở cuối cùng, cô đã kịp đặt ra ba lời hứa, ba lời thề danh dự buộc con mèo mun phải thực hiện:</p>
+      
+      <ul>
+        <li>Không ăn quả trứng.</li>
+        <li>Chăm sóc cho quả trứng nở.</li>
+        <li>Và điều không tưởng nhất: <strong>Dạy cho con hải âu non biết bay.</strong></li>
+      </ul>
+
+      <h3>1. Lời hứa của Kẻ mạnh</h3>
+      <p>Zorba là một con mèo đường phố. Nó có thừa sự ranh mãnh, móng vuốt và sức mạnh để xơi tái quả trứng đó trong một nốt nhạc. Nhưng Zorba đã không làm thế. Tại sao? Vì danh dự của một con mèo? Hay vì lòng trắc ẩn trỗi dậy trước sự sống mong manh sắp chào đời?</p>
+      
+      <img src="/images/anhMinhHoa/ConMeoDayHaiAuBay2.jpg" alt="Zorba ấp trứng">
+      <p class="img-caption">Hình ảnh con mèo to xác vụng về ấp ủ một sinh linh bé bỏng là hình ảnh đẹp nhất về tình phụ tử.</p>
+
+      <p>Khoảnh khắc Zorba vụng về nằm ấp lên quả trứng, chịu đựng sự chế giễu, chịu đựng cái nóng, cái mỏi, ta thấy một thông điệp vĩ đại: <em>Sức mạnh thực sự không nằm ở việc bạn có thể quật ngã ai, mà nằm ở việc bạn có thể che chở cho ai.</em></p>
+
+      <h3>2. "Má" Zorba và đứa con khác loài</h3>
+      <p>Lucky (May Mắn) - con hải âu non ra đời và gọi Zorba là "Má". Một tiếng gọi vừa buồn cười, vừa chua xót. Làm sao một con mèo, loài động vật bốn chân chuyên rình bắt chim, lại có thể làm mẹ của một con chim?</p>
+      
+      <p>Nhưng Zorba và cộng đồng mèo ở bến cảng đã chứng minh rằng tình yêu thương không có biên giới giống loài. Chúng nhường nhịn thức ăn, chúng bảo vệ Lucky khỏi lũ chuột cống, khỏi những mối nguy hiểm rình rập. Chúng yêu thương Lucky không phải vì cô bé sẽ trở thành một con mèo, mà vì cô bé là một con hải âu.</p>
+
+      <blockquote>
+        "Con là chim hải âu, và con phải sống cuộc đời của một con hải âu. Con phải bay."
+      </blockquote>
+
+      <h3>3. Bầu trời và Giọt nước mắt</h3>
+      <p>Hành trình dạy bay là hành trình khó khăn nhất. Mèo thì làm sao biết bay mà dạy? Chúng đã đọc nát cả thư viện, tra cứu mọi cuốn bách khoa toàn thư, nhưng lý thuyết suông không thể nâng cánh chim lên trời.</p>
+      
+      <p>Đỉnh điểm của câu chuyện là đêm mưa bão trên tháp chuông nhà thờ thánh Michael. Zorba đã phải phá vỡ điều cấm kỵ của loài mèo: Nói chuyện với con người, để nhờ một thi sĩ giúp đỡ. Vì tình yêu dành cho Lucky, Zorba chấp nhận đánh đổi sự an toàn của cả cộng đồng.</p>
+
+      <img src="/images/anhMinhHoa/ConMeoDayHaiAuBay3.jpg" alt="Lucky tập bay trong mưa">
+
+      <p>Khi Lucky đứng bên mép vực, run rẩy sợ hãi, Zorba đã nói: <em>"Chỉ những kẻ thực sự dám thì mới có thể bay."</em>. Và rồi, cô bé gieo mình vào khoảng không. Không phải rơi xuống, mà là vút lên.</p>
+
+      <p>Giọt nước mắt của con mèo mun to đùng mập ú khi nhìn đứa con bé bỏng sải cánh giữa bầu trời đêm mưa bão là giọt nước mắt của sự buông bỏ. Yêu thương tột cùng là khi ta chấp nhận để người mình yêu rời xa vòng tay mình, để họ được là chính họ, để họ thuộc về nơi họ xứng đáng thuộc về - Bầu trời.</p>
+
+      <h3>Lời kết: Gấp sách lại và mở lòng ra</h3>
+      <img src="/images/anhMinhHoa/ConMeoDayHaiAuBay1.jpeg" alt="Lucky tập bay trong mưa">
+      <p>Luis Sepúlveda đã đi xa, nhưng ông để lại cho chúng ta một bến cảng Hamburg lấp lánh tình người (và tình mèo). Cuốn sách nhắc nhở chúng ta rằng: Dù chúng ta có khác biệt về màu da, ngôn ngữ, hay xuất thân, chúng ta vẫn có thể yêu thương nhau, giữ lời hứa với nhau và giúp nhau "bay" lên.</p>
+      
+      <p>Một cuốn sách mỏng, nhưng sức nặng của nó đủ để neo giữ tâm hồn ta lại giữa dòng đời xô bồ này.</p>
+    `,
+  },
 ];

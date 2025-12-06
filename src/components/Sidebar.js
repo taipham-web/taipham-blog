@@ -24,6 +24,11 @@ export function Sidebar(categories = []) {
                       .join("")}
                 </ul>
             </div>
+            
+            <div class="sidebar-quote">
+                <p class="quote-text"><em>"Những vì sao dù khi chúng ta ngắm nhìn, hay lãng quên, thậm chí cả khi chúng ta chết đi thì chúng vẫn tỏa sáng ở nơi đó. Mỗi người hãy trở thành ánh sao trong thế gian này."</em></p>
+                <p class="quote-author">- I'll be right there (Shin Kyung-Sook)</p>
+            </div>
         </aside>
     `;
 }
