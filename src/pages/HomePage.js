@@ -14,9 +14,11 @@ export async function HomePage() {
   // Lấy bài viết từ Firebase
   allPosts = await getAllPosts();
 
-  // Sắp xếp bài viết theo date từ mới đến cũ
+  // Sắp xếp bài viết theo createdAt (thời gian tạo thực tế) từ mới đến cũ
   const sortedPosts = [...allPosts].sort((a, b) => {
-    return new Date(b.date) - new Date(a.date);
+    const timeA = a.createdAt?.seconds || 0;
+    const timeB = b.createdAt?.seconds || 0;
+    return timeB - timeA;
   });
 
   // Lấy danh sách danh mục duy nhất
@@ -55,7 +57,9 @@ export async function HomePage() {
 
 export function loadMorePosts() {
   const sortedPosts = [...allPosts].sort((a, b) => {
-    return new Date(b.date) - new Date(a.date);
+    const timeA = a.createdAt?.seconds || 0;
+    const timeB = b.createdAt?.seconds || 0;
+    return timeB - timeA;
   });
   const postsList = document.querySelector("[data-posts-list]");
   const loadMoreBtn = document.querySelector("[data-load-more]");
