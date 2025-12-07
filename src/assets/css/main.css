@@ -102,17 +102,19 @@ body {
   top: 1rem;
   right: 1rem;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.9);
-  border: none;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 4px;
-  color: #1a1a1a;
+  color: var(--text-color);
   transition: background 0.3s;
+  opacity: 0.95;
 }
 
 .menu-toggle:hover {
-  background: white;
+  background: var(--bg-light);
+  opacity: 1;
 }
 
 .menu-toggle svg {
@@ -254,7 +256,7 @@ body {
 
 /* Post Card */
 .post-card {
-  background: white;
+  background: var(--bg-color);
   padding: 0;
   margin-bottom: 1.5rem;
   border-radius: 8px;
@@ -291,7 +293,7 @@ body {
   position: absolute;
   top: 1rem;
   right: 1rem;
-  background: white;
+  background: var(--bg-color);
   border: 2px solid var(--border-color);
   border-radius: 50%;
   width: 40px;
@@ -394,10 +396,12 @@ body {
   border: 1px solid var(--border-color);
   border-radius: 4px;
   font-size: 1rem;
+  background: var(--bg-color);
+  color: var(--text-color);
 }
 
 .categories {
-  background: white;
+  background: var(--bg-color);
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: var(--shadow);
@@ -462,7 +466,7 @@ body {
 
 /* Sidebar Quote */
 .sidebar-quote {
-  background: white;
+  background: var(--bg-color);
   padding: 1.5rem;
   border-radius: 8px;
   box-shadow: var(--shadow);
@@ -496,7 +500,7 @@ body {
 }
 
 .post-detail {
-  background: white;
+  background: var(--bg-color);
   padding: 0;
   border-radius: 8px;
   box-shadow: var(--shadow);
@@ -604,7 +608,7 @@ body {
 
 .related-post-card {
   display: block;
-  background: white;
+  background: var(--bg-color);
   border: 1px solid var(--border-color);
   border-radius: 8px;
   overflow: hidden;
@@ -648,7 +652,7 @@ body {
 
 /* About Page */
 .about-page {
-  background: white;
+  background: var(--bg-color);
   padding: 0;
   border: none;
   max-width: 100%;
@@ -669,7 +673,7 @@ body {
   font-size: 4.5rem;
   font-weight: 700;
   margin-bottom: 1rem;
-  color: #1a1a1a;
+  color: var(--text-color);
   font-family: "Georgia", "Times New Roman", serif;
   line-height: 1.1;
   text-transform: lowercase;
@@ -677,14 +681,14 @@ body {
 
 .about-subtitle {
   font-size: 1.1rem;
-  color: #666;
+  color: var(--text-light);
   margin-bottom: 2rem;
   line-height: 1.6;
   text-align: justify;
 }
 
 .about-text p {
-  color: #666;
+  color: var(--text-light);
   line-height: 1.8;
   margin-bottom: 1.5rem;
   font-size: 0.95rem;
@@ -963,7 +967,7 @@ body {
 .empty-favorites {
   text-align: center;
   padding: 4rem 2rem;
-  background: white;
+  background: var(--bg-color);
   border-radius: 8px;
   border: 1px solid var(--border-color);
 }
@@ -1011,7 +1015,7 @@ body {
 .no-posts {
   text-align: center;
   padding: 4rem 2rem;
-  background: white;
+  background: var(--bg-color);
   border-radius: 8px;
   border: 1px solid var(--border-color);
 }
@@ -1057,7 +1061,7 @@ body {
 .scroll-to-top {
   position: fixed;
   bottom: 2rem;
-  right: 2rem;
+  right: 6rem;
   width: 50px;
   height: 50px;
   background-color: var(--primary-color);
@@ -1139,5 +1143,12 @@ body {
 
   .related-posts {
     position: static;
+  }
+
+  .scroll-to-top {
+    bottom: 1rem;
+    right: 5rem;
+    width: 45px;
+    height: 45px;
   }
 }

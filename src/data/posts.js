@@ -213,4 +213,61 @@ export const posts = [
       <p>Một cuốn sách mỏng, nhưng sức nặng của nó đủ để neo giữ tâm hồn ta lại giữa dòng đời xô bồ này.</p>
     `,
   },
+  {
+    id: 7,
+    title: "Dương Quang Phổ Chiếu: Khi ánh mặt trời thiêu đốt những linh hồn",
+    date: "2025-12-7",
+    category: "Review Phim",
+    youtubeId: "y5-FEtJTg44", // Trailer chính thức của phim
+    image: "/images/anhBia/DuongQuangPhoChieu.jpg",
+    content: `
+      <p class="intro-quote"><em>"Mặt trời công bằng nhất. Dù ở vĩ độ nào, mỗi nơi trên trái đất đều nhận được lượng ánh sáng như nhau."</em></p>
+      
+      <p>Chúng ta thường ca ngợi ánh mặt trời như biểu tượng của hy vọng, của sự sống và sự tích cực. Nhưng trong bộ phim Đài Loan đoạt giải Kim Mã - <strong>Dương Quang Phổ Chiếu (A Sun)</strong>, đạo diễn Chung Mong-hong đã đặt ra một mệnh đề tàn khốc: <em>Điều gì sẽ xảy ra nếu ánh mặt trời ấy quá chói chang, đến mức không chừa lại cho con người bất kỳ một bóng râm nào để ẩn nấp?</em></p>
+
+      <p>Bộ phim là bản giải phẫu đau đớn về một gia đình trung lưu điển hình ở Đài Bắc, nơi những rạn nứt được che đậy bằng những kỳ vọng sáo rỗng, để rồi vỡ vụn dưới sức nặng của cái gọi là "sự hoàn hảo".</p>
+
+      <h3>1. A-Hao: Bi kịch của "Mặt trời"</h3>
+      <p>A-Hao là đứa con cả mà mọi bậc cha mẹ đều mơ ước: đẹp trai, học giỏi, hiền lành và luôn mỉm cười. Cậu là niềm tự hào duy nhất của người cha A-Wen. Nhưng chính sự "hoàn hảo" đó là chiếc lồng giam cầm cậu.</p>
+      
+      <img src="/images/anhMinhHoa/duongquangphochieu3.jpg" alt="A-Hao đứng dưới nắng">
+      <p class="img-caption">A-Hao - Người luôn phải tỏa sáng và không được phép buồn bã.</p>
+
+      <p>Cậu kể câu chuyện về Tư Mã Quang đập vại nước để cứu người, nhưng khi vại vỡ, trong đó không có ai cả, mà chỉ có chính Tư Mã Quang đang ngồi trong bóng tối. A-Hao thèm khát cái bóng tối đó. Cậu nói:</p>
+      
+      <blockquote>
+        "Cậu có biết điều công bằng nhất trên thế giới là gì không? Là mặt trời... Nhưng tớ thì khác. Tớ không có bóng râm nào để trốn cả. Tớ chỉ có ánh nắng thôi."
+      </blockquote>
+
+      <p>Cái chết của A-Hao không phải là sự bồng bột. Đó là sự kiệt sức. Cậu đã "cháy" hết mình theo đúng nghĩa đen để làm hài lòng kỳ vọng của người khác, cho đến khi không còn lại gì ngoài tro tàn. Cậu nhảy xuống, không phải để chết, mà để tìm một nơi mát mẻ, nơi không có ánh mắt kỳ vọng của người cha soi rọi.</p>
+
+      <h3>2. A-Ho: Đứa con của "Bóng tối"</h3>
+      <p>Trái ngược với anh trai, A-Ho là "đứa con bỏ đi". Vào trại giáo dưỡng, bị cha từ mặt, A-Ho sống lầm lì trong cái bóng khổng lồ của anh mình. Nhưng nghịch lý thay, chính vì sống trong bóng tối, A-Ho lại có sức sống dai dẳng nhất.</p>
+      <img src="/images/anhMinhHoa/duongquangphochieu1.jpg" alt="A-Ho">
+      <p>Cậu được phép sai lầm, được phép tức giận, được phép sa ngã. Và vì thế, cậu có cơ hội để sửa sai. Hành trình của A-Ho là hành trình tìm lại phẩm giá từ vũng bùn. Cậu không rực rỡ, nhưng cậu "thực".</p>
+
+      <h3>3. Người cha A-Wen: Nắm bắt thời cơ hay Cố chấp mù quáng?</h3>
+      <p>Ông A-Wen, một thầy dạy lái xe, luôn miệng nói câu châm ngôn: <em>"Nắm bắt thời cơ, quyết định phương hướng"</em>. Ông tặng cuốn sổ ghi dòng chữ này cho mọi học viên, và cho cả A-Hao. Nhưng trớ trêu thay, ông là người mất phương hướng nhất trong gia đình.</p>
+
+      <img src="/images/anhMinhHoa/duongquangphochieu2.jpg" alt="Người cha A-Wen">
+
+      <p>Ông chối bỏ đứa con hư (A-Ho) và dồn áp lực lên đứa con ngoan (A-Hao). Khi A-Hao mất, ông sụp đổ. Sự chuyển biến tâm lý của A-Wen ở cuối phim là chi tiết gây tranh cãi và ám ảnh nhất. Ông đã "làm vườn" - một cách nói ẩn dụ cho việc nhổ bỏ những "cỏ dại" (tên côn đồ Radish) cản đường con trai mình.</p>
+      <p>Hành động giết người của ông không phải là anh hùng, nó là sự tuyệt vọng của một người cha nhận ra mình đã thất bại trong việc yêu thương con đúng cách, và giờ đây ông cố bù đắp bằng một cách cực đoan sai lệch.</p>
+
+      <h3>4. Nghệ thuật ánh sáng và Màu sắc</h3>
+      <p>Đạo diễn Chung Mong-hong đã sử dụng ánh sáng như một nhân vật thứ 5 trong gia đình. </p>
+      <ul>
+        <li>Những cảnh quay A-Hao luôn ngập tràn nắng, nhưng là thứ nắng trắng bệch, chói mắt và vô hồn.</li>
+        <li>Những cảnh của A-Ho thường gắn với mưa đêm, màu xanh lạnh lẽo của trại giam.</li>
+        <li>Cảnh cuối phim, khi người mẹ ngồi trên xe đạp, ánh nắng xuyên qua tán cây loang lổ trên mặt bà. Đó là thứ ánh sáng "vừa đủ". Không quá chói chang, có những khoảng tối xen kẽ. Đó mới là cuộc sống thực sự.</li>
+      </ul>
+
+      <h3>Lời kết: Chúng ta đều cần một bóng râm</h3>
+      <p><strong>Dương Quang Phổ Chiếu</strong> khép lại nhưng để lại một khoảng lặng mênh mông trong lòng người xem. Bộ phim là lời cảnh tỉnh cho những bậc cha mẹ, và cho cả chính chúng ta: Đừng cố gắng trở thành mặt trời.</p>
+
+      <img src="/images/anhMinhHoa/duongquangphochieu4.jpg" alt="Cảnh cuối phim">
+
+      <p>Chúng ta là con người, chúng ta cần ánh sáng để vươn lên, nhưng cũng cần bóng tối để được yếu đuối, để được khóc và để được nghỉ ngơi. Hãy cho phép bản thân, và những người thân yêu, có một "bóng râm" để trú ẩn khi cuộc đời trở nên quá gay gắt.</p>
+    `,
+  },
 ];

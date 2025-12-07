@@ -8,6 +8,7 @@ import { FavoritesPage } from "./pages/FavoritesPage.js";
 import { CategoryPage } from "./pages/CategoryPage.js";
 import { SearchPage } from "./pages/SearchPage.js";
 import { toggleFavorite } from "./utils/favorites.js";
+import { ThemeToggleButton, toggleTheme, initTheme } from "./utils/theme.js";
 
 export function App() {
   const path = window.location.pathname;
@@ -40,6 +41,7 @@ export function App() {
             ${content}
         </div>
         ${Footer()}
+        ${ThemeToggleButton()}
     `;
 }
 
@@ -107,6 +109,9 @@ export function render() {
 
     // Initialize scroll to top button
     initScrollToTop();
+
+    // Initialize theme toggle
+    initThemeToggle();
   }
 }
 
@@ -259,6 +264,20 @@ function initScrollToTop() {
     });
   });
 }
+
+// Theme toggle functionality
+function initThemeToggle() {
+  const themeToggleBtn = document.querySelector("[data-theme-toggle]");
+
+  if (!themeToggleBtn) return;
+
+  themeToggleBtn.addEventListener("click", () => {
+    toggleTheme();
+  });
+}
+
+// Initialize theme on page load
+initTheme();
 
 // Handle browser back/forward buttons
 window.addEventListener("popstate", render);

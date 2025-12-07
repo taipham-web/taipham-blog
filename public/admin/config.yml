@@ -1,0 +1,49 @@
+backend:
+  name: git-gateway
+  branch: main # Branch mà bạn muốn commit vào
+
+# publish_mode: editorial_workflow # Bật chế độ draft/review (tùy chọn)
+
+media_folder: "public/images/posts" # Thư mục lưu ảnh upload
+public_folder: "/images/posts" # Đường dẫn public cho ảnh
+
+locale: "vi" # Ngôn ngữ tiếng Việt
+
+collections:
+  - name: "blog" # Tên collection
+    label: "Bài viết" # Tên hiển thị
+    folder: "content/posts" # Thư mục chứa bài viết
+    create: true # Cho phép tạo bài mới
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Format tên file
+    fields: # Các trường dữ liệu
+      - { label: "Tiêu đề", name: "title", widget: "string" }
+      - {
+          label: "Ngày đăng",
+          name: "date",
+          widget: "datetime",
+          format: "YYYY-MM-DD",
+        }
+      - {
+          label: "Danh mục",
+          name: "category",
+          widget: "select",
+          options:
+            [
+              "Siêu xe",
+              "Review Phim",
+              "Review Sách",
+              "Công nghệ",
+              "Du lịch",
+              "Âm nhạc",
+              "Khác",
+            ],
+        }
+      - { label: "Ảnh bìa", name: "image", widget: "image", required: false }
+      - {
+          label: "YouTube Video ID",
+          name: "youtubeId",
+          widget: "string",
+          required: false,
+          hint: "ID video YouTube (ví dụ: PkkV1vLHUvQ)",
+        }
+      - { label: "Nội dung", name: "body", widget: "markdown" }
