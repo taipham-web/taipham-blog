@@ -1,9 +1,9 @@
 import { formatDate } from "../utils/formatDate.js";
-import { posts } from "../data/posts.js";
+import { getPostById, getAllPosts } from "../firebase/posts.js";
 import { isFavorite } from "../utils/favorites.js";
 
-export function PostDetail(postId) {
-  const post = posts.find((p) => p.id === parseInt(postId));
+export async function PostDetail(postId) {
+  const post = await getPostById(postId);
 
   if (!post) {
     return '<div class="error">Không tìm thấy bài viết</div>';
@@ -11,8 +11,11 @@ export function PostDetail(postId) {
 
   const isLiked = isFavorite(post.id);
 
+  // Lấy tất cả bài viết để tìm bài liên quan
+  const allPosts = await getAllPosts();
+
   // Lấy bài viết cùng danh mục (trừ bài hiện tại)
-  const relatedPosts = posts
+  const relatedPosts = allPosts
     .filter((p) => p.category === post.category && p.id !== post.id)
     .slice(0, 3); // Lấy tối đa 3 bài
 

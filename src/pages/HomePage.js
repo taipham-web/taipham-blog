@@ -1,20 +1,26 @@
 // HomePage - Trang chủ (list bài viết)
 import { PostCard } from "../components/PostCard.js";
 import { Sidebar } from "../components/Sidebar.js";
-import { posts } from "../data/posts.js";
+import { getAllPosts } from "../firebase/posts.js";
 
 const POSTS_PER_PAGE = 5;
 let currentDisplayCount = POSTS_PER_PAGE;
+let allPosts = [];
 
-export function HomePage() {
+export async function HomePage() {
   // Reset count khi vào trang chủ
   currentDisplayCount = POSTS_PER_PAGE;
 
-  // Sắp xếp bài viết theo id từ lớn đến bé (mới nhất trước)
-  const sortedPosts = [...posts].sort((a, b) => b.id - a.id);
+  // Lấy bài viết từ Firebase
+  allPosts = await getAllPosts();
+
+  // Sắp xếp bài viết theo date từ mới đến cũ
+  const sortedPosts = [...allPosts].sort((a, b) => {
+    return new Date(b.date) - new Date(a.date);
+  });
 
   // Lấy danh sách danh mục duy nhất
-  const categories = [...new Set(posts.map((post) => post.category))];
+  const categories = [...new Set(allPosts.map((post) => post.category))];
 
   // Lấy bài viết để hiển thị
   const displayPosts = sortedPosts.slice(0, currentDisplayCount);
@@ -48,7 +54,9 @@ export function HomePage() {
 }
 
 export function loadMorePosts() {
-  const sortedPosts = [...posts].sort((a, b) => b.id - a.id);
+  const sortedPosts = [...allPosts].sort((a, b) => {
+    return new Date(b.date) - new Date(a.date);
+  });
   const postsList = document.querySelector("[data-posts-list]");
   const loadMoreBtn = document.querySelector("[data-load-more]");
 
@@ -82,7 +90,7 @@ export function loadMorePosts() {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
         e.stopPropagation();
-        const postId = parseInt(btn.getAttribute("data-post-id"));
+        const postId = btn.getAttribute("data-post-id");
         const { toggleFavorite } = require("../utils/favorites.js");
         const isNowFavorite = toggleFavorite(postId);
 

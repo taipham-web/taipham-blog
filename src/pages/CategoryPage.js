@@ -1,14 +1,18 @@
 // CategoryPage - Trang hiển thị bài viết theo danh mục
 import { PostCard } from "../components/PostCard.js";
 import { Sidebar } from "../components/Sidebar.js";
-import { posts } from "../data/posts.js";
+import { getAllPosts } from "../firebase/posts.js";
 
-export function CategoryPage(categoryName) {
+export async function CategoryPage(categoryName) {
   const decodedCategory = decodeURIComponent(categoryName);
-  const categoryPosts = posts.filter(
+
+  // Lấy tất cả bài viết từ Firebase
+  const allPosts = await getAllPosts();
+
+  const categoryPosts = allPosts.filter(
     (post) => post.category === decodedCategory
   );
-  const categories = [...new Set(posts.map((post) => post.category))];
+  const categories = [...new Set(allPosts.map((post) => post.category))];
 
   return `
         <div class="home-page">

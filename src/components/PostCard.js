@@ -15,8 +15,8 @@ function createExcerpt(htmlContent, maxLength = 120) {
 }
 
 export function PostCard(post) {
-  // Tự động tạo excerpt từ content
-  const autoExcerpt = createExcerpt(post.content);
+  // Ưu tiên excerpt có sẵn, nếu không có thì tự tạo từ content
+  const excerpt = post.excerpt || createExcerpt(post.content);
   const isLiked = isFavorite(post.id);
 
   return `
@@ -42,7 +42,7 @@ export function PostCard(post) {
                     <span class="post-category">${post.category}</span>
                 </div>
                 
-                <p class="post-excerpt">${autoExcerpt}</p>
+                <p class="post-excerpt">${excerpt}</p>
                 
                 <a href="/post/${post.id}" class="read-more">Đọc tiếp →</a>
             </div>

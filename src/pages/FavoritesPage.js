@@ -1,11 +1,18 @@
 // FavoritesPage - Trang hiển thị bài viết yêu thích
 import { PostCard } from "../components/PostCard.js";
 import { getFavorites } from "../utils/favorites.js";
-import { posts } from "../data/posts.js";
+import { getAllPosts } from "../firebase/posts.js";
 
-export function FavoritesPage() {
+export async function FavoritesPage() {
   const favoriteIds = getFavorites();
-  const favoritePosts = posts.filter((post) => favoriteIds.includes(post.id));
+
+  // Lấy tất cả bài viết từ Firebase
+  const allPosts = await getAllPosts();
+
+  // Lọc các bài viết yêu thích (so sánh string)
+  const favoritePosts = allPosts.filter((post) =>
+    favoriteIds.some((id) => String(id) === String(post.id))
+  );
 
   if (favoritePosts.length === 0) {
     return `

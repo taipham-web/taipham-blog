@@ -9,30 +9,95 @@ import { CategoryPage } from "./pages/CategoryPage.js";
 import { SearchPage } from "./pages/SearchPage.js";
 import { toggleFavorite } from "./utils/favorites.js";
 import { ThemeToggleButton, toggleTheme, initTheme } from "./utils/theme.js";
+import {
+  AdminLoginPage,
+  initAdminLogin,
+} from "./pages/admin/AdminLoginPage.js";
+import {
+  AdminDashboard,
+  initAdminDashboard,
+} from "./pages/admin/AdminDashboard.js";
+import {
+  AdminPostEditor,
+  initAdminPostEditor,
+} from "./pages/admin/AdminPostEditor.js";
+import { auth } from "./firebase/config.js";
 
-export function App() {
+export async function App() {
   const path = window.location.pathname;
-
   let content = "";
+  let isAdminPage = path.startsWith("/admin");
 
-  // Simple routing
-  if (path === "/" || path === "/index.html") {
-    content = HomePage();
+  // Admin routes
+  if (path === "/admin/login") {
+    content = AdminLoginPage();
+  } else if (path === "/admin" || path === "/admin/dashboard") {
+    // Wait for auth to initialize before checking
+    const user = await new Promise((resolve) => {
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        unsubscribe();
+        resolve(user);
+      });
+    });
+
+    if (!user) {
+      window.location.href = "/admin/login";
+      return "";
+    }
+    content = await AdminDashboard();
+  } else if (path.startsWith("/admin/post/edit/")) {
+    // Wait for auth to initialize before checking
+    const user = await new Promise((resolve) => {
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        unsubscribe();
+        resolve(user);
+      });
+    });
+
+    if (!user) {
+      window.location.href = "/admin/login";
+      return "";
+    }
+    const postId = path.split("/")[4];
+    content = await AdminPostEditor(postId);
+  } else if (path === "/admin/post/new") {
+    // Wait for auth to initialize before checking
+    const user = await new Promise((resolve) => {
+      const unsubscribe = auth.onAuthStateChanged((user) => {
+        unsubscribe();
+        resolve(user);
+      });
+    });
+
+    if (!user) {
+      window.location.href = "/admin/login";
+      return "";
+    }
+    content = await AdminPostEditor("new");
+  }
+  // Public routes
+  else if (path === "/" || path === "/index.html") {
+    content = await HomePage();
   } else if (path.startsWith("/post/")) {
     const postId = path.split("/")[2];
-    content = PostDetail(postId);
+    content = await PostDetail(postId);
   } else if (path === "/about") {
     content = AboutPage();
   } else if (path === "/favorites") {
-    content = FavoritesPage();
+    content = await FavoritesPage();
   } else if (path.startsWith("/category/")) {
     const categoryName = path.split("/")[2];
-    content = CategoryPage(categoryName);
+    content = await CategoryPage(categoryName);
   } else if (path.startsWith("/search/")) {
     const searchQuery = path.split("/")[2];
-    content = SearchPage(searchQuery);
+    content = await SearchPage(searchQuery);
   } else {
     content = '<div class="error">404 - Không tìm thấy trang</div>';
+  }
+
+  // Admin pages don't need header/footer
+  if (isAdminPage) {
+    return content;
   }
 
   return `
@@ -55,64 +120,84 @@ export function navigate(url) {
 export function render() {
   const root = document.getElementById("root");
   if (root) {
-    root.innerHTML = App();
-
-    // Add click handlers for navigation
-    document.querySelectorAll('a[href^="/"]').forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        navigate(link.getAttribute("href"));
-      });
+    App().then((html) => {
+      root.innerHTML = html;
+      initPageScripts();
     });
-
-    // Add click handlers for favorite buttons
-    document.querySelectorAll(".favorite-btn").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-        const postId = parseInt(btn.getAttribute("data-post-id"));
-        const isNowFavorite = toggleFavorite(postId);
-
-        // Toggle active class
-        if (isNowFavorite) {
-          btn.classList.add("active");
-        } else {
-          btn.classList.remove("active");
-        }
-      });
-    });
-
-    // Add search functionality
-    const searchInput = document.getElementById("search-input");
-    if (searchInput) {
-      searchInput.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") {
-          const query = searchInput.value.trim();
-          if (query) {
-            navigate(`/search/${encodeURIComponent(query)}`);
-          }
-        }
-      });
-    }
-
-    // Initialize gallery slider if on About page
-    initGallerySlider();
-
-    // Initialize categories dropdown
-    initCategoriesDropdown();
-
-    // Initialize mobile menu
-    initMobileMenu();
-
-    // Initialize load more button
-    initLoadMore();
-
-    // Initialize scroll to top button
-    initScrollToTop();
-
-    // Initialize theme toggle
-    initThemeToggle();
   }
+}
+
+function initPageScripts() {
+  const path = window.location.pathname;
+
+  // Init admin pages
+  if (path === "/admin/login") {
+    initAdminLogin();
+    return;
+  } else if (path === "/admin" || path === "/admin/dashboard") {
+    initAdminDashboard();
+    return;
+  } else if (path.startsWith("/admin/post/")) {
+    const postId = path.split("/")[4] || "new";
+    initAdminPostEditor(postId);
+    return;
+  }
+
+  // Add click handlers for navigation
+  document.querySelectorAll('a[href^="/"]').forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      navigate(link.getAttribute("href"));
+    });
+  });
+
+  // Add click handlers for favorite buttons
+  document.querySelectorAll(".favorite-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const postId = btn.getAttribute("data-post-id"); // Không cần parseInt, giữ nguyên string
+      const isNowFavorite = toggleFavorite(postId);
+
+      // Toggle active class
+      if (isNowFavorite) {
+        btn.classList.add("active");
+      } else {
+        btn.classList.remove("active");
+      }
+    });
+  });
+
+  // Add search functionality
+  const searchInput = document.getElementById("search-input");
+  if (searchInput) {
+    searchInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        const query = searchInput.value.trim();
+        if (query) {
+          navigate(`/search/${encodeURIComponent(query)}`);
+        }
+      }
+    });
+  }
+
+  // Initialize gallery slider if on About page
+  initGallerySlider();
+
+  // Initialize categories dropdown
+  initCategoriesDropdown();
+
+  // Initialize mobile menu
+  initMobileMenu();
+
+  // Initialize load more button
+  initLoadMore();
+
+  // Initialize scroll to top button
+  initScrollToTop();
+
+  // Initialize theme toggle
+  initThemeToggle();
 }
 
 // Mobile menu functionality

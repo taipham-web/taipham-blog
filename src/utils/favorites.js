@@ -15,13 +15,15 @@ export function getFavorites() {
 // Kiểm tra bài viết có trong danh sách yêu thích không
 export function isFavorite(postId) {
   const favorites = getFavorites();
-  return favorites.includes(postId);
+  // So sánh cả string và number để tương thích Firebase
+  return favorites.some((id) => String(id) === String(postId));
 }
 
 // Thêm bài viết vào danh sách yêu thích
 export function addFavorite(postId) {
   const favorites = getFavorites();
-  if (!favorites.includes(postId)) {
+  // Kiểm tra xem đã có chưa (so sánh string)
+  if (!favorites.some((id) => String(id) === String(postId))) {
     favorites.push(postId);
     localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
     return true;
@@ -32,7 +34,8 @@ export function addFavorite(postId) {
 // Xóa bài viết khỏi danh sách yêu thích
 export function removeFavorite(postId) {
   let favorites = getFavorites();
-  favorites = favorites.filter((id) => id !== postId);
+  // Filter bằng cách so sánh string
+  favorites = favorites.filter((id) => String(id) !== String(postId));
   localStorage.setItem(FAVORITES_KEY, JSON.stringify(favorites));
   return true;
 }

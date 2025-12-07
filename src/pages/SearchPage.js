@@ -1,18 +1,25 @@
 // SearchPage - Trang hiển thị kết quả tìm kiếm
 import { PostCard } from "../components/PostCard.js";
 import { Sidebar } from "../components/Sidebar.js";
-import { posts } from "../data/posts.js";
+import { getAllPosts } from "../firebase/posts.js";
 
-export function SearchPage(searchQuery) {
+export async function SearchPage(searchQuery) {
   const decodedQuery = decodeURIComponent(searchQuery).toLowerCase();
-  const searchResults = posts.filter((post) => {
+
+  // Lấy tất cả bài viết từ Firebase
+  const allPosts = await getAllPosts();
+
+  const searchResults = allPosts.filter((post) => {
     const titleMatch = post.title.toLowerCase().includes(decodedQuery);
     const categoryMatch = post.category.toLowerCase().includes(decodedQuery);
     const contentMatch = post.content.toLowerCase().includes(decodedQuery);
-    return titleMatch || categoryMatch || contentMatch;
+    const excerptMatch = post.excerpt
+      ? post.excerpt.toLowerCase().includes(decodedQuery)
+      : false;
+    return titleMatch || categoryMatch || contentMatch || excerptMatch;
   });
 
-  const categories = [...new Set(posts.map((post) => post.category))];
+  const categories = [...new Set(allPosts.map((post) => post.category))];
 
   return `
         <div class="home-page">
