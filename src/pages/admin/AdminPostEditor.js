@@ -79,6 +79,14 @@ export async function AdminPostEditor(postId = null) {
                     ? "selected"
                     : ""
                 }>Review Sách</option>
+                <option value="Trinh thám" ${
+                  isEdit && currentPost.category === "Trinh thám"
+                    ? "selected"
+                    : ""
+                }>Trinh thám</option>
+                <option value="Kinh dị" ${
+                  isEdit && currentPost.category === "Kinh dị" ? "selected" : ""
+                }>Kinh dị</option>
                 <option value="Công nghệ" ${
                   isEdit && currentPost.category === "Công nghệ"
                     ? "selected"
