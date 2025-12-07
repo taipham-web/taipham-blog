@@ -169,12 +169,31 @@
   font-weight: 600;
   color: var(--text-color);
   border-bottom: 2px solid var(--border-color);
+  font-size: 0.9rem;
+}
+
+.posts-table th:nth-child(1) {
+  width: 40%;
+}
+
+.posts-table th:nth-child(2) {
+  width: 15%;
+}
+
+.posts-table th:nth-child(3) {
+  width: 15%;
+}
+
+.posts-table th:nth-child(4) {
+  width: 30%;
 }
 
 .posts-table td {
   padding: 1rem;
   border-bottom: 1px solid var(--border-color);
   color: var(--text-color);
+  font-size: 0.9rem;
+  word-wrap: break-word;
 }
 
 .posts-table tr:last-child td {

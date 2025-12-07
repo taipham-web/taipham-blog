@@ -5,6 +5,15 @@ import { uploadImage, uploadImageBlob } from "../../firebase/storage.js";
 let currentPost = null;
 let editorInstance = null;
 
+// Helper function to get today's date in YYYY-MM-DD format
+function getTodayDate() {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = String(today.getMonth() + 1).padStart(2, "0");
+  const day = String(today.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 export async function AdminPostEditor(postId = null) {
   if (postId && postId !== "new") {
     currentPost = await getPostById(postId);
@@ -55,11 +64,7 @@ export async function AdminPostEditor(postId = null) {
             <div class="form-group">
               <label for="date">Ngày đăng *</label>
               <input type="date" id="date" name="date" required 
-                     value="${
-                       isEdit
-                         ? currentPost.date
-                         : new Date().toISOString().split("T")[0]
-                     }">
+                     value="${isEdit ? currentPost.date : getTodayDate()}">
             </div>
             
             <div class="form-group">
