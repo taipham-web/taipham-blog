@@ -30,6 +30,7 @@ import {
   PostDetailSkeleton,
   PostsListSkeleton,
 } from "./components/SkeletonLoading.js";
+import { autoAddScrollReveal } from "./utils/scrollReveal.js";
 
 export async function App() {
   const path = window.location.pathname;
@@ -295,6 +296,9 @@ function initPageScripts() {
       }
     });
   });
+
+  // Initialize scroll reveal animations
+  autoAddScrollReveal();
 }
 
 // Mobile menu functionality
