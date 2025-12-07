@@ -5,4 +5,11 @@ export default defineConfig({
   json: {
     stringify: false,
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+  },
 });
