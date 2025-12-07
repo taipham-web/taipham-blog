@@ -23,6 +23,13 @@ import {
   initAdminPostEditor,
 } from "./pages/admin/AdminPostEditor.js";
 import { auth } from "./firebase/config.js";
+import { setPageTitle } from "./utils/pageTitle.js";
+import { getPostById } from "./firebase/posts.js";
+import {
+  HomePageSkeleton,
+  PostDetailSkeleton,
+  PostsListSkeleton,
+} from "./components/SkeletonLoading.js";
 
 export async function App() {
   const path = window.location.pathname;
@@ -31,6 +38,7 @@ export async function App() {
 
   // Admin routes
   if (path === "/admin/login") {
+    setPageTitle("Đăng nhập Admin", false);
     content = AdminLoginPage();
   } else if (path === "/admin" || path === "/admin/dashboard") {
     // Wait for auth to initialize before checking
@@ -45,6 +53,7 @@ export async function App() {
       window.location.href = "/admin/login";
       return "";
     }
+    setPageTitle("Admin Dashboard", false);
     content = await AdminDashboard();
   } else if (path.startsWith("/admin/post/edit/")) {
     // Wait for auth to initialize before checking
@@ -60,6 +69,7 @@ export async function App() {
       return "";
     }
     const postId = path.split("/")[4];
+    setPageTitle("Chỉnh sửa bài viết", false);
     content = await AdminPostEditor(postId);
   } else if (path === "/admin/post/new") {
     // Wait for auth to initialize before checking
@@ -74,25 +84,39 @@ export async function App() {
       window.location.href = "/admin/login";
       return "";
     }
+    setPageTitle("Viết bài mới", false);
     content = await AdminPostEditor("new");
   }
   // Public routes
   else if (path === "/" || path === "/index.html") {
+    setPageTitle("Trang chủ");
     content = await HomePage();
   } else if (path.startsWith("/post/")) {
     const postId = path.split("/")[2];
+    // Lấy thông tin bài viết để set title
+    const post = await getPostById(postId);
+    if (post) {
+      setPageTitle(post.title);
+    } else {
+      setPageTitle("Không tìm thấy bài viết");
+    }
     content = await PostDetail(postId);
   } else if (path === "/about") {
+    setPageTitle("Giới thiệu");
     content = AboutPage();
   } else if (path === "/favorites") {
+    setPageTitle("Yêu thích");
     content = await FavoritesPage();
   } else if (path.startsWith("/category/")) {
-    const categoryName = path.split("/")[2];
+    const categoryName = decodeURIComponent(path.split("/")[2]);
+    setPageTitle(`Danh mục: ${categoryName}`);
     content = await CategoryPage(categoryName);
   } else if (path.startsWith("/search/")) {
-    const searchQuery = path.split("/")[2];
+    const searchQuery = decodeURIComponent(path.split("/")[2]);
+    setPageTitle(`Tìm kiếm: ${searchQuery}`);
     content = await SearchPage(searchQuery);
   } else {
+    setPageTitle("404 - Không tìm thấy trang");
     content = '<div class="error">404 - Không tìm thấy trang</div>';
   }
 
@@ -118,11 +142,53 @@ export function navigate(url) {
   window.scrollTo(0, 0); // Scroll to top after navigation
 }
 
+// Show skeleton loading based on route
+function getSkeletonForRoute(path) {
+  if (path === "/" || path === "/index.html") {
+    return HomePageSkeleton();
+  } else if (path.startsWith("/post/")) {
+    return PostDetailSkeleton();
+  } else if (
+    path.startsWith("/category/") ||
+    path.startsWith("/search/") ||
+    path === "/favorites"
+  ) {
+    return HomePageSkeleton();
+  }
+  return "";
+}
+
 export function render() {
   const root = document.getElementById("root");
   if (root) {
+    const path = window.location.pathname;
+    const isAdminPage = path.startsWith("/admin");
+
+    // Show skeleton loading for public pages
+    if (!isAdminPage) {
+      const skeleton = getSkeletonForRoute(path);
+      if (skeleton) {
+        root.innerHTML = `
+          ${Header()}
+          <div class="container main-container">
+            ${skeleton}
+          </div>
+          ${Footer()}
+          ${ThemeToggleButton()}
+        `;
+      }
+    }
+
+    // Load actual content
     App().then((html) => {
       root.innerHTML = html;
+      // Add fade-in animation
+      const mainContent = root.querySelector(
+        ".main-container, .post-detail-container, .home-page"
+      );
+      if (mainContent) {
+        mainContent.classList.add("fade-in");
+      }
       initPageScripts();
     });
   }
