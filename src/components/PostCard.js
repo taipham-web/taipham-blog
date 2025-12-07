@@ -40,6 +40,17 @@ export function PostCard(post) {
                 <div class="post-meta">
                     <span class="post-date">${formatDate(post.date)}</span>
                     <span class="post-category">${post.category}</span>
+                    ${
+                      post.views
+                        ? `<span class="post-views">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                              <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            ${post.views}
+                           </span>`
+                        : ""
+                    }
                 </div>
                 
                 <p class="post-excerpt">${excerpt}</p>

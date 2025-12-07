@@ -9,6 +9,7 @@ import { CategoryPage } from "./pages/CategoryPage.js";
 import { SearchPage } from "./pages/SearchPage.js";
 import { toggleFavorite } from "./utils/favorites.js";
 import { ThemeToggleButton, toggleTheme, initTheme } from "./utils/theme.js";
+import { addReaction } from "./firebase/posts.js";
 import {
   AdminLoginPage,
   initAdminLogin,
@@ -198,6 +199,36 @@ function initPageScripts() {
 
   // Initialize theme toggle
   initThemeToggle();
+
+  // Add reaction button handlers
+  document.querySelectorAll(".reaction-btn").forEach((btn) => {
+    btn.addEventListener("click", async (e) => {
+      e.preventDefault();
+      const reactionType = btn.getAttribute("data-reaction");
+      const postId = btn.closest(".reactions").getAttribute("data-post-id");
+
+      // Add reaction to Firebase
+      const success = await addReaction(postId, reactionType);
+
+      if (success) {
+        // Update count
+        const countSpan = btn.querySelector(".count");
+        const currentCount = parseInt(countSpan.textContent) || 0;
+        countSpan.textContent = currentCount + 1;
+
+        // Create flying emoji animation
+        const emoji = btn.querySelector(".emoji").textContent;
+        const flyingEmoji = document.createElement("span");
+        flyingEmoji.className = "flying-emoji";
+        flyingEmoji.textContent = emoji;
+        flyingEmoji.style.left = btn.offsetLeft + btn.offsetWidth / 2 + "px";
+        btn.parentElement.appendChild(flyingEmoji);
+
+        // Remove after animation
+        setTimeout(() => flyingEmoji.remove(), 1000);
+      }
+    });
+  });
 }
 
 // Mobile menu functionality

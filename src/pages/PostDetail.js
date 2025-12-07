@@ -1,5 +1,10 @@
 import { formatDate } from "../utils/formatDate.js";
-import { getPostById, getAllPosts } from "../firebase/posts.js";
+import {
+  getPostById,
+  getAllPosts,
+  incrementViews,
+  addReaction,
+} from "../firebase/posts.js";
 import { isFavorite } from "../utils/favorites.js";
 
 export async function PostDetail(postId) {
@@ -8,6 +13,9 @@ export async function PostDetail(postId) {
   if (!post) {
     return '<div class="error">Không tìm thấy bài viết</div>';
   }
+
+  // Tăng lượt xem
+  incrementViews(postId);
 
   const isLiked = isFavorite(post.id);
 
@@ -56,10 +64,48 @@ export async function PostDetail(postId) {
                 <div class="post-meta">
                     <span class="post-date">${formatDate(post.date)}</span>
                     <span class="post-category">${post.category}</span>
+                    <span class="post-views">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                        <circle cx="12" cy="12" r="3"/>
+                      </svg>
+                      ${post.views || 0}
+                    </span>
                 </div>
             </header>
             <div class="post-content">
                 ${post.content}
+            </div>
+            
+            <!-- Reaction Bar -->
+            <div class="reaction-bar">
+              <h3>Bạn cảm thấy bài viết này thế nào?</h3>
+              <div class="reactions" data-post-id="${post.id}">
+                <button class="reaction-btn" data-reaction="like" title="Thích">
+                  <span class="emoji">👍</span>
+                  <span class="count">${post.reactions?.like || 0}</span>
+                </button>
+                <button class="reaction-btn" data-reaction="love" title="Yêu thích">
+                  <span class="emoji">❤️</span>
+                  <span class="count">${post.reactions?.love || 0}</span>
+                </button>
+                <button class="reaction-btn" data-reaction="haha" title="Haha">
+                  <span class="emoji">😂</span>
+                  <span class="count">${post.reactions?.haha || 0}</span>
+                </button>
+                <button class="reaction-btn" data-reaction="wow" title="Wow">
+                  <span class="emoji">😮</span>
+                  <span class="count">${post.reactions?.wow || 0}</span>
+                </button>
+                <button class="reaction-btn" data-reaction="sad" title="Buồn">
+                  <span class="emoji">😢</span>
+                  <span class="count">${post.reactions?.sad || 0}</span>
+                </button>
+                <button class="reaction-btn" data-reaction="angry" title="Tức giận">
+                  <span class="emoji">😠</span>
+                  <span class="count">${post.reactions?.angry || 0}</span>
+                </button>
+              </div>
             </div>
         </article>
         

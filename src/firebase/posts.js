@@ -10,6 +10,7 @@ import {
   query,
   orderBy,
   Timestamp,
+  increment,
 } from "firebase/firestore";
 import { db } from "./config.js";
 
@@ -62,6 +63,15 @@ export async function createPost(postData) {
   try {
     const docRef = await addDoc(collection(db, POSTS_COLLECTION), {
       ...postData,
+      views: 0, // Khởi tạo views = 0
+      reactions: {
+        like: 0,
+        love: 0,
+        haha: 0,
+        wow: 0,
+        sad: 0,
+        angry: 0,
+      },
       createdAt: Timestamp.now(),
       updatedAt: Timestamp.now(),
     });
@@ -129,5 +139,33 @@ export async function searchPosts(searchTerm) {
   } catch (error) {
     console.error("Error searching posts:", error);
     return [];
+  }
+}
+
+// Increment view count
+export async function incrementViews(postId) {
+  try {
+    const docRef = doc(db, POSTS_COLLECTION, postId);
+    await updateDoc(docRef, {
+      views: increment(1),
+    });
+    return true;
+  } catch (error) {
+    console.error("Error incrementing views:", error);
+    return false;
+  }
+}
+
+// Add reaction to post
+export async function addReaction(postId, reactionType) {
+  try {
+    const docRef = doc(db, POSTS_COLLECTION, postId);
+    await updateDoc(docRef, {
+      [`reactions.${reactionType}`]: increment(1),
+    });
+    return true;
+  } catch (error) {
+    console.error("Error adding reaction:", error);
+    return false;
   }
 }
