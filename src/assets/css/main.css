@@ -355,11 +355,25 @@ body {
   margin-bottom: 1rem;
   font-size: 0.875rem;
   color: var(--text-light);
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .post-category {
   color: var(--primary-color);
   font-weight: 500;
+}
+
+.post-views,
+.reading-time {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.post-views svg,
+.reading-time svg {
+  flex-shrink: 0;
 }
 
 .post-excerpt {

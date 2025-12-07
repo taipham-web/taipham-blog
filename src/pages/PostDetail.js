@@ -6,6 +6,10 @@ import {
   addReaction,
 } from "../firebase/posts.js";
 import { isFavorite } from "../utils/favorites.js";
+import {
+  calculateReadingTime,
+  formatReadingTime,
+} from "../utils/readingTime.js";
 
 export async function PostDetail(postId) {
   const post = await getPostById(postId);
@@ -70,6 +74,13 @@ export async function PostDetail(postId) {
                         <circle cx="12" cy="12" r="3"/>
                       </svg>
                       ${post.views || 0}
+                    </span>
+                    <span class="reading-time">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                      </svg>
+                      ${formatReadingTime(calculateReadingTime(post.content))}
                     </span>
                 </div>
             </header>

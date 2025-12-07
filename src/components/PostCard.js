@@ -1,6 +1,10 @@
 // src/components/PostCard.js
 import { formatDate } from "../utils/formatDate.js";
 import { isFavorite } from "../utils/favorites.js";
+import {
+  calculateReadingTime,
+  formatReadingTime,
+} from "../utils/readingTime.js";
 
 // Hàm hỗ trợ: Loại bỏ thẻ HTML và cắt ngắn văn bản
 function createExcerpt(htmlContent, maxLength = 120) {
@@ -51,6 +55,13 @@ export function PostCard(post) {
                            </span>`
                         : ""
                     }
+                    <span class="reading-time">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <circle cx="12" cy="12" r="10"/>
+                          <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        ${formatReadingTime(calculateReadingTime(post.content))}
+                    </span>
                 </div>
                 
                 <p class="post-excerpt">${excerpt}</p>
