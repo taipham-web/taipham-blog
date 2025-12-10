@@ -1,20 +1,24 @@
 // Sidebar Component - Thanh bên (tìm kiếm, danh mục)
+import { t } from "../utils/language.js";
+
 export function Sidebar(categories = []) {
   return `
         <aside class="sidebar">
             <div class="search-box">
-                <input type="text" placeholder="Tìm kiếm..." id="search-input">
+                <input type="text" placeholder="${t(
+                  "sidebar.search"
+                )}" id="search-input">
             </div>
             
             <div class="categories">
                 <button class="categories-toggle" data-categories-toggle>
-                    <span>Danh mục</span>
+                    <span>${t("sidebar.categories")}</span>
                     <svg class="dropdown-icon" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M7 10l5 5 5-5z"/>
                     </svg>
                 </button>
                 <ul class="categories-list" data-categories-list>
-                    <li><a href="/">Tất cả</a></li>
+                    <li><a href="/">${t("sidebar.allCategories")}</a></li>
                     ${categories
                       .map(
                         (cat) => `
@@ -26,8 +30,8 @@ export function Sidebar(categories = []) {
             </div>
             
             <div class="sidebar-quote">
-                <p class="quote-text"><em>"Những vì sao dù khi chúng ta ngắm nhìn, hay lãng quên, thậm chí cả khi chúng ta chết đi thì chúng vẫn tỏa sáng ở nơi đó. Mỗi người hãy trở thành ánh sao trong thế gian này."</em></p>
-                <p class="quote-author">- I'll be right there (Shin Kyung-Sook)</p>
+                <p class="quote-text"><em>"${t("sidebar.quote")}"</em></p>
+                <p class="quote-author">- ${t("sidebar.quoteAuthor")}</p>
             </div>
         </aside>
     `;

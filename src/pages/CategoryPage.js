@@ -2,6 +2,7 @@
 import { PostCard } from "../components/PostCard.js";
 import { Sidebar } from "../components/Sidebar.js";
 import { getAllPosts } from "../firebase/posts.js";
+import { t } from "../utils/language.js";
 
 export async function CategoryPage(categoryName) {
   const decodedCategory = decodeURIComponent(categoryName);
@@ -17,21 +18,23 @@ export async function CategoryPage(categoryName) {
   return `
         <div class="home-page">
             <main class="main-content">
-                <h1>Danh mục: ${decodedCategory}</h1>
+                <h1>${t("sidebar.categories")}: ${decodedCategory}</h1>
                 ${
                   categoryPosts.length > 0
                     ? `
-                    <p class="category-count">${
-                      categoryPosts.length
-                    } bài viết</p>
+                    <p class="category-count">${categoryPosts.length} ${t(
+                        "category.posts"
+                      )}</p>
                     <div class="posts-list">
                         ${categoryPosts.map((post) => PostCard(post)).join("")}
                     </div>
                 `
                     : `
                     <div class="no-posts">
-                        <p>Không có bài viết nào trong danh mục này</p>
-                        <a href="/" class="back-home">← Quay lại trang chủ</a>
+                        <p>${t("category.noPosts")}</p>
+                        <a href="/" class="back-home">← ${t(
+                          "favorites.discover"
+                        )}</a>
                     </div>
                 `
                 }

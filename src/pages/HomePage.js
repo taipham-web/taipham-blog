@@ -2,6 +2,7 @@
 import { PostCard } from "../components/PostCard.js";
 import { Sidebar } from "../components/Sidebar.js";
 import { getAllPosts } from "../firebase/posts.js";
+import { t } from "../utils/language.js";
 
 const POSTS_PER_PAGE = 5;
 let currentDisplayCount = POSTS_PER_PAGE;
@@ -31,7 +32,7 @@ export async function HomePage() {
   return `
         <div class="home-page">
             <main class="main-content">
-                <h1>Bài viết</h1>
+                <h1>${t("home.title")}</h1>
                 <div class="posts-list" data-posts-list>
                     ${displayPosts.map((post) => PostCard(post)).join("")}
                 </div>
@@ -40,7 +41,7 @@ export async function HomePage() {
                     ? `
                     <div class="load-more-container">
                         <button class="load-more-btn" data-load-more>
-                            Xem thêm
+                            ${t("home.loadMore")}
                             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>

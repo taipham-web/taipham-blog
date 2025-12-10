@@ -2,6 +2,7 @@
 import { PostCard } from "../components/PostCard.js";
 import { Sidebar } from "../components/Sidebar.js";
 import { getAllPosts } from "../firebase/posts.js";
+import { t } from "../utils/language.js";
 
 export async function SearchPage(searchQuery) {
   const decodedQuery = decodeURIComponent(searchQuery).toLowerCase();
@@ -24,22 +25,26 @@ export async function SearchPage(searchQuery) {
   return `
         <div class="home-page">
             <main class="main-content">
-                <h1>Kết quả tìm kiếm: "${decodeURIComponent(searchQuery)}"</h1>
+                <h1>${t("search.title")} ${t(
+    "search.for"
+  )}: "${decodeURIComponent(searchQuery)}"</h1>
                 ${
                   searchResults.length > 0
                     ? `
-                    <p class="search-count">Tìm thấy ${
-                      searchResults.length
-                    } bài viết</p>
+                    <p class="search-count">${t("search.noResults")} ${
+                        searchResults.length
+                      } ${t("search.resultsCount")}</p>
                     <div class="posts-list">
                         ${searchResults.map((post) => PostCard(post)).join("")}
                     </div>
                 `
                     : `
                     <div class="no-posts">
-                        <p>Không tìm thấy bài viết nào phù hợp</p>
+                        <p>${t("search.noResults")}</p>
                         <p class="hint">Thử tìm kiếm với từ khóa khác</p>
-                        <a href="/" class="back-home">← Quay lại trang chủ</a>
+                        <a href="/" class="back-home">← ${t(
+                          "favorites.discover"
+                        )}</a>
                     </div>
                 `
                 }

@@ -1,16 +1,18 @@
 // AboutPage - Trang giới thiệu
+import { t } from "../utils/language.js";
+
 export function AboutPage() {
   return `
         <div class="about-page">
             <div class="about-container">
                 <div class="about-content">
-                    <h1>about me</h1>
-                    <p class="about-subtitle">Mình là một sinh viên IT đang tìm lại niềm đam mê bằng việc viết lách.</p>
+                    <h1>${t("about.title")}</h1>
+                    <p class="about-subtitle">${t("about.subtitle")}</p>
                     
                     <div class="about-text">
-                        <p>Mong bạn sẽ tìm thấy những điều thú vị và hữu ích tại đây.</p>
+                        <p>${t("about.text1")}</p>
                         
-                        <p>Nơi mình chia sẻ những suy nghĩ, trải nghiệm về sách, phim ảnh và cả cuộc sống.</p>
+                        <p>${t("about.text2")}</p>
                     </div>
                     
                     <div class="social-buttons">

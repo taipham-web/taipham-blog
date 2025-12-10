@@ -9,6 +9,7 @@ import { CategoryPage } from "./pages/CategoryPage.js";
 import { SearchPage } from "./pages/SearchPage.js";
 import { toggleFavorite } from "./utils/favorites.js";
 import { ThemeToggleButton, toggleTheme, initTheme } from "./utils/theme.js";
+import { initLanguage, initLanguageToggle } from "./utils/language.js";
 import { addReaction } from "./firebase/posts.js";
 import {
   AdminLoginPage,
@@ -267,6 +268,9 @@ function initPageScripts() {
   // Initialize theme toggle
   initThemeToggle();
 
+  // Initialize language toggle
+  initLanguageToggle();
+
   // Add reaction button handlers
   document.querySelectorAll(".reaction-btn").forEach((btn) => {
     btn.addEventListener("click", async (e) => {
@@ -464,6 +468,9 @@ function initThemeToggle() {
 
 // Initialize theme on page load
 initTheme();
+
+// Initialize language on page load
+initLanguage();
 
 // Handle browser back/forward buttons
 window.addEventListener("popstate", render);
