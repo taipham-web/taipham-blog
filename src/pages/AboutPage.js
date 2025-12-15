@@ -33,7 +33,14 @@ export function AboutPage() {
                     </div>
                 </div>
                 
-        
+                <div class="about-badges">
+                    <h3>Certifications</h3>
+                    <div class="badges-container">
+                        <div class="badge-item" data-iframe-width="150" data-iframe-height="270" data-share-badge-id="ab036b43-d0ce-48dc-a6a9-ae36a48fdd65" data-share-badge-host="https://www.credly.com"></div>
+                        <div class="badge-item" data-iframe-width="150" data-iframe-height="270" data-share-badge-id="4869a1f8-ee1e-4e6b-8c7b-11057c0450b9" data-share-badge-host="https://www.credly.com"></div>
+                        <div class="badge-item" data-iframe-width="150" data-iframe-height="270" data-share-badge-id="b0218c93-c30c-4be8-86ea-51e2a2565cf2" data-share-badge-host="https://www.credly.com"></div>
+                    </div>
+                </div>
             </div>
             
             <div class="about-gallery">
@@ -52,15 +59,6 @@ export function AboutPage() {
                     <div class="gallery-slide">
                         <img src="/images/about/gallery3.jpg" alt="Gallery 3" />
                     </div>
-                    <div class="gallery-slide">
-                        <img src="/images/about/gallery4.jpg" alt="Gallery 4" />
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="/images/about/gallery5.jpg" alt="Gallery 5" />
-                    </div>
-                    <div class="gallery-slide">
-                        <img src="/images/about/gallery6.jpg" alt="Gallery 6" />
-                    </div>
                 </div>
                 <button class="gallery-nav next" data-gallery-next>
                     <svg viewBox="0 0 24 24" fill="currentColor">
@@ -69,9 +67,6 @@ export function AboutPage() {
                 </button>
                 <div class="gallery-indicators" data-gallery-indicators>
                     <span class="indicator active"></span>
-                    <span class="indicator"></span>
-                    <span class="indicator"></span>
-                    <span class="indicator"></span>
                     <span class="indicator"></span>
                     <span class="indicator"></span>
                 </div>

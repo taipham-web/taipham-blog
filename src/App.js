@@ -253,6 +253,12 @@ function initPageScripts() {
   // Initialize gallery slider if on About page
   initGallerySlider();
 
+  // Initialize Credly badges if on About page
+  initCredlyBadges();
+
+  // Initialize Credly badges if on About page
+  initCredlyBadges();
+
   // Initialize categories dropdown
   initCategoriesDropdown();
 
@@ -418,6 +424,25 @@ function initGallerySlider() {
   // Pause auto-play on hover
   slider.addEventListener("mouseenter", stopAutoPlay);
   slider.addEventListener("mouseleave", startAutoPlay);
+}
+
+// Initialize Credly badges
+function initCredlyBadges() {
+  const badgeContainers = document.querySelectorAll("[data-share-badge-id]");
+  if (badgeContainers.length === 0) return;
+
+  // Remove existing script if any
+  const existingScript = document.querySelector('script[src*="credly.com"]');
+  if (existingScript) {
+    existingScript.remove();
+  }
+
+  // Load Credly embed script
+  const script = document.createElement("script");
+  script.type = "text/javascript";
+  script.async = true;
+  script.src = "//cdn.credly.com/assets/utilities/embed.js";
+  document.body.appendChild(script);
 }
 
 // Load more functionality
