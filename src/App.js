@@ -1,6 +1,7 @@
 // App.js - Component chính để điều hướng (Routing)
 import { Header } from "./components/Header.js";
 import { Footer } from "./components/Footer.js";
+import { MusicPlayer, initMusicPlayer } from "./components/MusicPlayer.js";
 import { HomePage, loadMorePosts } from "./pages/HomePage.js";
 import { PostDetail } from "./pages/PostDetail.js";
 import { AboutPage } from "./pages/AboutPage.js";
@@ -165,6 +166,14 @@ export function render() {
   if (root) {
     const path = window.location.pathname;
     const isAdminPage = path.startsWith("/admin");
+
+    // Show/hide music player based on admin page
+    const musicPlayerContainer = document.querySelector(
+      ".music-player-container"
+    );
+    if (musicPlayerContainer) {
+      musicPlayerContainer.style.display = isAdminPage ? "none" : "block";
+    }
 
     // Show skeleton loading for public pages
     if (!isAdminPage) {

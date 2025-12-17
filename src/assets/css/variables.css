@@ -4,10 +4,17 @@
   --secondary-color: #1e40af;
   --text-color: #1f2937;
   --text-light: #6b7280;
+  --text-secondary: #6b7280;
   --bg-color: #ffffff;
   --bg-light: #f9fafb;
+  --card-bg: #ffffff;
+  --hover-bg: #f3f4f6;
   --border-color: #e5e7eb;
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  /* RGB values for opacity */
+  --primary-color-rgb: 37, 99, 235;
+  --secondary-color-rgb: 30, 64, 175;
 
   /* Typography */
   --font-heading: "Playfair Display", Georgia, serif;
@@ -22,10 +29,17 @@
   --secondary-color: #93c5fd;
   --text-color: #f3f4f6;
   --text-light: #d1d5db;
+  --text-secondary: #9ca3af;
   --bg-color: #111827;
   --bg-light: #1f2937;
+  --card-bg: #1f2937;
+  --hover-bg: #374151;
   --border-color: #374151;
   --shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+
+  /* RGB values for opacity */
+  --primary-color-rgb: 96, 165, 250;
+  --secondary-color-rgb: 147, 197, 253;
 }
 
 [data-theme="dark"] body {
