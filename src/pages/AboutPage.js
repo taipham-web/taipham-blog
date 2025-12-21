@@ -6,6 +6,9 @@ export function AboutPage() {
         <div class="about-page">
             <div class="about-container">
                 <div class="about-content">
+                    <div class="about-avatar">
+                        <img src="/images/avatar.jpg" alt="Avatar" />
+                    </div>
                     <h1>${t("about.title")}</h1>
                     <p class="about-subtitle">${t("about.subtitle")}</p>
                     

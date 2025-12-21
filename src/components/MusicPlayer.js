@@ -168,19 +168,21 @@ export function initMusicPlayer() {
       audio.src = song.url;
       audio.load();
     }
-    
+
     const playPromise = audio.play();
     if (playPromise !== undefined) {
-      playPromise.then(() => {
-        isPlaying = true;
-        isLoading = false;
-        updatePlayPauseBtn();
-      }).catch((error) => {
-        console.log('Play interrupted:', error);
-        isLoading = false;
-        isPlaying = false;
-        updatePlayPauseBtn();
-      });
+      playPromise
+        .then(() => {
+          isPlaying = true;
+          isLoading = false;
+          updatePlayPauseBtn();
+        })
+        .catch((error) => {
+          console.log("Play interrupted:", error);
+          isLoading = false;
+          isPlaying = false;
+          updatePlayPauseBtn();
+        });
     }
 
     updateNowPlaying(song);
@@ -233,7 +235,7 @@ export function initMusicPlayer() {
   // Play/Pause toggle
   playPauseBtn.addEventListener("click", () => {
     if (isLoading) return; // Prevent action while loading
-    
+
     if (currentSongIndex === -1) {
       playSong(0);
     } else {
@@ -245,13 +247,15 @@ export function initMusicPlayer() {
       } else {
         const playPromise = audio.play();
         if (playPromise !== undefined) {
-          playPromise.then(() => {
-            isPlaying = true;
-            updatePlayPauseBtn();
-            updateActiveItem();
-          }).catch((error) => {
-            console.log('Play interrupted:', error);
-          });
+          playPromise
+            .then(() => {
+              isPlaying = true;
+              updatePlayPauseBtn();
+              updateActiveItem();
+            })
+            .catch((error) => {
+              console.log("Play interrupted:", error);
+            });
         }
       }
     }
