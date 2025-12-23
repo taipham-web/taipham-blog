@@ -4,7 +4,7 @@ export function Footer() {
   return `
         <footer class="footer">
             <div class="container">
-                <p>&copy; ${currentYear} My Personal Blog. All rights reserved.</p>
+                <p>&copy; ${currentYear} PhamHuynhTai's Blog. All rights reserved.</p>
             </div>
         </footer>
         <button class="scroll-to-top" id="scrollToTop" aria-label="Scroll to top">
