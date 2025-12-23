@@ -2,7 +2,7 @@
 import { Header } from "./components/Header.js";
 import { Footer } from "./components/Footer.js";
 import { MusicPlayer, initMusicPlayer } from "./components/MusicPlayer.js";
-import { HomePage, loadMorePosts } from "./pages/HomePage.js";
+import { HomePage, loadMorePosts, toggleSort } from "./pages/HomePage.js";
 import { PostDetail } from "./pages/PostDetail.js";
 import { AboutPage } from "./pages/AboutPage.js";
 import { FavoritesPage } from "./pages/FavoritesPage.js";
@@ -277,6 +277,9 @@ function initPageScripts() {
   // Initialize load more button
   initLoadMore();
 
+  // Initialize sort button
+  initSort();
+
   // Initialize scroll to top button
   initScrollToTop();
 
@@ -462,6 +465,17 @@ function initLoadMore() {
 
   loadMoreBtn.addEventListener("click", () => {
     loadMorePosts();
+  });
+}
+
+// Sort functionality
+function initSort() {
+  const sortBtn = document.querySelector("[data-sort-btn]");
+
+  if (!sortBtn) return;
+
+  sortBtn.addEventListener("click", () => {
+    toggleSort();
   });
 }
 
