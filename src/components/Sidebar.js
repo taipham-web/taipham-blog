@@ -30,8 +30,8 @@ export function Sidebar(categories = []) {
             </div>
             
             <div class="sidebar-quote">
-                <p class="quote-text"><em>"${t("sidebar.quote")}"</em></p>
-                <p class="quote-author">- ${t("sidebar.quoteAuthor")}</p>
+                <p class="quote-text">${t("sidebar.quote")}</p>
+                <p class="quote-author">${t("sidebar.quoteAuthor")}</p>
             </div>
         </aside>
     `;

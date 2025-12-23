@@ -8,6 +8,8 @@ import { AboutPage } from "./pages/AboutPage.js";
 import { FavoritesPage } from "./pages/FavoritesPage.js";
 import { CategoryPage } from "./pages/CategoryPage.js";
 import { SearchPage } from "./pages/SearchPage.js";
+import { ProjectsPage } from "./pages/ProjectsPage.js";
+import { ResumePage } from "./pages/ResumePage.js";
 import { toggleFavorite } from "./utils/favorites.js";
 import { ThemeToggleButton, toggleTheme, initTheme } from "./utils/theme.js";
 import { initLanguage, initLanguageToggle } from "./utils/language.js";
@@ -104,6 +106,12 @@ export async function App() {
       setPageTitle("Không tìm thấy bài viết");
     }
     content = await PostDetail(postId);
+  } else if (path === "/projects") {
+    setPageTitle("Dự án");
+    content = ProjectsPage();
+  } else if (path === "/resume") {
+    setPageTitle("Resume / CV");
+    content = ResumePage();
   } else if (path === "/about") {
     setPageTitle("Giới thiệu");
     content = AboutPage();

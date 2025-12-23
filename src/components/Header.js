@@ -12,6 +12,8 @@ export function Header() {
                     <p class="header-subtitle">${t("header.subtitle")}</p>
                     <nav class="header-nav">
                         <a href="/">${t("header.home")}</a>
+                        <a href="/projects">${t("header.projects")}</a>
+                        <a href="/resume">${t("header.resume")}</a>
                         <a href="/favorites">${t("header.favorites")}</a>
                         <a href="/about">${t("header.about")}</a>
                         ${LanguageToggle()}
@@ -27,6 +29,8 @@ export function Header() {
             </button>
             <ul class="mobile-menu" data-nav-menu>
                 <li><a href="/">${t("mobileMenu.home")}</a></li>
+                <li><a href="/projects">${t("mobileMenu.projects")}</a></li>
+                <li><a href="/resume">${t("mobileMenu.resume")}</a></li>
                 <li><a href="/favorites">${t("mobileMenu.favorites")}</a></li>
                 <li><a href="/about">${t("mobileMenu.about")}</a></li>
                 <li class="mobile-menu-lang">${LanguageToggle()}</li>

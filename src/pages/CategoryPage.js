@@ -10,9 +10,9 @@ export async function CategoryPage(categoryName) {
   // Lấy tất cả bài viết từ Firebase
   const allPosts = await getAllPosts();
 
-  const categoryPosts = allPosts.filter(
-    (post) => post.category === decodedCategory
-  );
+  const categoryPosts = allPosts
+    .filter((post) => post.category === decodedCategory)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
   const categories = [...new Set(allPosts.map((post) => post.category))];
 
   return `
