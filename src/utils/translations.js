@@ -316,7 +316,7 @@ export const translations = {
         "Front-end developer with strong aesthetic sense and solid foundation in JavaScript/ReactJS. Experienced in building responsive web interfaces, optimizing user experience (UX/UI) through clean, lightweight code and Freelance work.",
       educationTitle: "EDUCATION",
       degree: "Information Technology / Software Engineering",
-      school: "Ho Chi Minh City University of Technology (HCMUT-HCMTECH)",
+      school: "Ho Chi Minh City University of Technology (HUTECH)",
       skillsTitle: "SKILLS",
       languagesTitle: "LANGUAGES",
       projectsTitle: "PROJECTS & EXPERIENCE",
