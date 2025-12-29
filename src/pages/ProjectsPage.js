@@ -22,6 +22,7 @@ export function ProjectsPage() {
       image: "/images/projects/SportConnect-project.jpg",
       github: "https://github.com/Nhom666/sport_connect_app.git",
       demo: "",
+      videoId: "UmeRAeULLfU",
       features: t("projects.project2.features"),
       category: "Mobile App",
     },
@@ -29,11 +30,12 @@ export function ProjectsPage() {
 
   const categories = ["All", "Web Development", "Mobile App", "Cloud", "Other"];
 
-  // Setup filter functionality after render
+  // Setup filter functionality and video navigation after render
   setTimeout(() => {
     const filterButtons = document.querySelectorAll(".filter-btn");
     const projectCards = document.querySelectorAll(".project-card");
 
+    // Filter functionality
     filterButtons.forEach((button) => {
       button.addEventListener("click", () => {
         const filterValue = button.getAttribute("data-filter");
@@ -54,6 +56,24 @@ export function ProjectsPage() {
           }
         });
       });
+    });
+
+    // Video navigation for projects with videoId
+    projectCards.forEach((card) => {
+      const videoId = card.getAttribute("data-video-id");
+      if (videoId) {
+        card.addEventListener("click", (e) => {
+          // Don't navigate if clicking on links
+          if (e.target.closest("a")) {
+            return;
+          }
+          const projectTitle = card.getAttribute("data-project-title");
+          const url = `/video/${videoId}/${projectTitle}`;
+          window.history.pushState({}, "", url);
+          // Trigger re-render
+          window.dispatchEvent(new PopStateEvent("popstate"));
+        });
+      }
     });
   }, 0);
 
@@ -83,7 +103,15 @@ export function ProjectsPage() {
           ${projects
             .map(
               (project) => `
-            <article class="project-card" data-category="${project.category}">
+            <article class="project-card" data-category="${project.category}" ${
+                project.videoId
+                  ? `data-video-id="${
+                      project.videoId
+                    }" data-project-title="${encodeURIComponent(
+                      project.title
+                    )}" style="cursor: pointer;"`
+                  : ""
+              }>
               <img src="${project.image}" alt="${
                 project.title
               }" class="project-image" loading="lazy" />

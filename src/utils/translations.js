@@ -197,6 +197,7 @@ export const translations = {
       ok: "OK",
       yes: "Có",
       no: "Không",
+      back: "Trở về",
     },
   },
   en: {
@@ -395,6 +396,7 @@ export const translations = {
       ok: "OK",
       yes: "Yes",
       no: "No",
+      back: "Back",
     },
   },
 };

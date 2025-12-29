@@ -10,6 +10,7 @@ import { CategoryPage } from "./pages/CategoryPage.js";
 import { SearchPage } from "./pages/SearchPage.js";
 import { ProjectsPage } from "./pages/ProjectsPage.js";
 import { ResumePage } from "./pages/ResumePage.js";
+import { VideoPlayerPage } from "./pages/VideoPlayerPage.js";
 import { toggleFavorite } from "./utils/favorites.js";
 import { ThemeToggleButton, toggleTheme, initTheme } from "./utils/theme.js";
 import { initLanguage, initLanguageToggle } from "./utils/language.js";
@@ -109,6 +110,11 @@ export async function App() {
   } else if (path === "/projects") {
     setPageTitle("Dự án");
     content = ProjectsPage();
+  } else if (path.startsWith("/video/")) {
+    const videoId = path.split("/")[2];
+    const projectTitle = decodeURIComponent(path.split("/")[3] || "");
+    setPageTitle(projectTitle || "Video");
+    content = VideoPlayerPage(videoId, projectTitle);
   } else if (path === "/resume") {
     setPageTitle("Resume / CV");
     content = ResumePage();
